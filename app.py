@@ -49,6 +49,18 @@ while True:
 
     img = drawAll(img, buttonList)
 
+    if len(hands) != 0:
+        for button in buttonList:
+            x, y = button.pos
+            w, h = button.size
+
+            lmlist = hands[0]["lmList"]
+            if x < lmlist[8][0] < x+w and y < lmlist[8][1] < y + h:
+                cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), cv2.FILLED)
+                cv2.putText(img, button.text, (x + 20, y + 65), cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
+
+
+
 
 
     cTime = time.time()
